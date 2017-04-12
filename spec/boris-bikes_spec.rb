@@ -16,9 +16,12 @@ describe DockingStation do
   end
 
   it 'docks a new bike' do
-    bike = Bike.new
-
-    expect()
-
+    expect(subject.instance_variable_get(:@bike)).to be_an_instance_of(Bike)
   end
+
+#  it 'docks a new bike' do
+#    unless subject.instance_variable_get(:@bike).is_a? Bike
+#     fail
+#    end
+#  end
 end
