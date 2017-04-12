@@ -12,6 +12,13 @@ describe DockingStation do
     bike = subject.release_bike
     ## we should expect that the variable 'bike' should return 'true' when
     ## we call the method 'be_working' on it
-    expect(bike).to be_working
+    expect(bike.working?).to(eq(true))
+  end
+
+  it 'docks a new bike' do
+    bike = Bike.new
+
+    expect()
+
   end
 end

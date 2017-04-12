@@ -1,4 +1,8 @@
 class DockingStation
+  def initialize
+    @bike = bike
+  end
+
   def release_bike
     Bike.new
   end
