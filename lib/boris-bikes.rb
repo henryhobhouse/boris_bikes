@@ -6,8 +6,6 @@ end
 
 class Bike
   def working?
-  end
-  def be_working
     true
   end
 end
