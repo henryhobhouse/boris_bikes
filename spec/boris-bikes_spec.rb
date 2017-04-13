@@ -1,27 +1,34 @@
 require 'boris-bikes'
 
 describe DockingStation do
-  ## The class 'DockingStation' should respond to the command to release a bike, using release_bike
+
   it { is_expected.to respond_to :release_bike }
 
   it 'releases working bikes' do
-    ## (potential confusion) create a new variable 'bike' that is equal
-    ## to the return value of 'release_bike' method on the new instance of the
-    ## original class
-    ## e.g. bike = DockingStation.new.release_bike
     bike = subject.release_bike
-    ## we should expect that the variable 'bike' should return 'true' when
-    ## we call the method 'be_working' on it
     expect(bike.working?).to(eq(true))
   end
 
-  it 'docks a new bike' do
-    expect(subject.instance_variable_get(:@bike)).to be_an_instance_of(Bike)
+  it 'allows a new DockingStation instance to receive a bike' do
+    is_expected.to respond_to :dock_bike
   end
 
-#  it 'docks a new bike' do
-#    unless subject.instance_variable_get(:@bike).is_a? Bike
-#     fail
-#    end
-#  end
+  it 'docks a new bike' do
+    # taking the class variable, that is a hash, and checking has instance of Bike
+    #
+    # this test checks that every time a new DockingStation is created, it includes
+    # space for bikes (which are instance variables here), and checks that the
+    # things inside the space are actually bikes (and not just pigeons or sandwiches)
+    #
+    # Here are two ways we tried and got stuck on:
+    # expect(subject.dock_bike.instance_variable_get(:@bike)).to exist
+    # is_expected.to respond_to subject.dock_bike.instance_variable_get(:@bike)
+
+    expect(subject.dock_bike).to be_an_instance_of(Bike)
+  end
+
+  it 'tests whether or not a member of the public can can see that a bike has been docked' do
+    expect(subject.bike).to respond_to :bike
+  end
+
 end
