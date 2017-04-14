@@ -27,4 +27,7 @@ describe DockingStation do
     expect(a.bike).to eq b
   end
 
+  it 'should raise an error if docking station is empty' do
+    expect {subject.release_bike}.to raise_error "No Bikes!"
+  end
 end
