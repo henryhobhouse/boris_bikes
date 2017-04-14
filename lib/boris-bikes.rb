@@ -10,6 +10,9 @@ class DockingStation
   end
 
   def dock_bike(x)
+    if @bike != nil
+      raise ArgumentError, "Bikes Full!", caller
+    end
     @bike = x
   end
 
