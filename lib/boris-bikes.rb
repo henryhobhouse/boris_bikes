@@ -2,20 +2,12 @@ class DockingStation
 
   attr_reader :bike
 
-  def bike
+  def release_bike
     @bike
   end
 
-  def bike=(str)
-    @bike = str
-  end
-
-  def release_bike
-    Bike.new
-  end
-
-  def dock_bike
-    Bike.new
+  def dock_bike(x)
+    @bike = x
   end
 
 end

@@ -5,7 +5,7 @@ describe DockingStation do
   it { is_expected.to respond_to :release_bike }
 
   it 'releases working bikes' do
-    bike = subject.release_bike
+    bike = Bike.new
     expect(bike.working?).to(eq(true))
   end
 
@@ -13,22 +13,18 @@ describe DockingStation do
     is_expected.to respond_to :dock_bike
   end
 
-  it 'docks a new bike' do
-    # taking the class variable, that is a hash, and checking has instance of Bike
-    #
-    # this test checks that every time a new DockingStation is created, it includes
-    # space for bikes (which are instance variables here), and checks that the
-    # things inside the space are actually bikes (and not just pigeons or sandwiches)
-    #
-    # Here are two ways we tried and got stuck on:
-    # expect(subject.dock_bike.instance_variable_get(:@bike)).to exist
-    # is_expected.to respond_to subject.dock_bike.instance_variable_get(:@bike)
-
-    expect(subject.dock_bike).to be_an_instance_of(Bike)
+  it 'docks a bike' do
+    a = DockingStation.new
+    b = Bike.new
+    a.dock_bike(b)
+    expect(a.bike == b).to eq true
   end
 
   it 'tests whether or not a member of the public can can see that a bike has been docked' do
-    expect(subject.bike).to respond_to :bike
+    a = DockingStation.new
+    b = Bike.new
+    a.dock_bike(b)
+    expect(a.bike).to eq b
   end
 
 end
