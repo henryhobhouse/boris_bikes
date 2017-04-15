@@ -34,7 +34,7 @@ describe DockingStation do
 
   it 'should raise an error when docking station is full' do
   ds = DockingStation.new
-  20.times {ds.dock_bike(Bike.new)}
+  ds.test_constant.times { ds.dock_bike(Bike.new) }
   expect {ds.dock_bike(Bike.new)}.to raise_error "Bikes Full!"
   end
 end
