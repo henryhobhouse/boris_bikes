@@ -32,9 +32,18 @@ describe DockingStation do
     expect {subject.release_bike}.to raise_error "No Bikes!"
   end
 
-  it 'should raise an error when docking station is full' do
+  it 'should set capacity variable to 20 as default' do
+    expect(subject.capacity).to eq 20
+  end
+
+  it 'should change capacity varaible to argument passed to the clase' do
+    a = DockingStation.new 15
+    expect(a.capacity).to eq 15
+  end
+
+  it 'should raise an error when docking station is full using capacity variable' do
   ds = DockingStation.new
-  ds.test_constant.times { ds.dock_bike(Bike.new) }
+  ds.capacity.times { ds.dock_bike(Bike.new) }
   expect {ds.dock_bike(Bike.new)}.to raise_error "Bikes Full!"
   end
 end

@@ -1,14 +1,11 @@
 class DockingStation
-
-  attr_reader :bikes
   DEFAULT_CAPACITY = 20
+  attr_reader :bikes
+  attr_reader :capacity
 
-  def test_constant
-    DEFAULT_CAPACITY
-  end
-
-  def initialize
+  def initialize(x = DEFAULT_CAPACITY)
     @bikes = []
+    @capacity = x
   end
 
   def release_bike
@@ -20,7 +17,7 @@ class DockingStation
   end
 
   def full?
-    raise ArgumentError, "Bikes Full!", caller if @bikes.count >= DEFAULT_CAPACITY
+    raise ArgumentError, "Bikes Full!", caller if @bikes.count >= @capacity
   end
 
   def empty?
